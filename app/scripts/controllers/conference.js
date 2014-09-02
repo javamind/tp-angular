@@ -4,10 +4,10 @@ angular.module('myconfs').controller('ConfCtrl', function ($scope){
     $scope.conferences = conferences;
 
     $scope.addConference = function(){
-        alert('Ajout d\’une nouvelle conférence')
+        alert('Ajout d\'une nouvelle confÃ©rence')
     }
 
     $scope.zoomConference = function(code){
-        alert('Modification de la conférence' + code)
+        alert('Modification de la confÃ©rence ' + code)
     }
 });

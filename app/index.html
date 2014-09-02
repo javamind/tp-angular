@@ -5,9 +5,56 @@
     <title>Angular TP</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
 </head>
 <body ng-app="myconfs">
-    <h1>Hello World!</h1>
 
+<div class="container" ng-controller="ConfCtrl">
+
+    <h1>Liste des conférences</h1>
+
+    <div class="row">
+          <div class="col-xs-11">
+              Vous pouvez sauvegarder toutes vos conférences avec myconfs
+          </div>
+        <div class="col-xs-1">
+            <button class="btn btn-info" ng-click="addConference()">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </div>
+    </div>
+    <br>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Logo</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Visu</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="conf in conferences">
+            <td><img ng-src="{{conf.image}}" style="max-height: 40px"/></td>
+            <td>{{conf.name}}</td>
+            <td>{{conf.descriotion}}</td>
+            <td>{{conf.startdate}}</td>
+            <td>{{conf.enddate}}</td>
+            <td>
+                <button class="btn btn-default" ng-click="zoomConference(conf.name)">
+                    <span class="glyphicon glyphicon-zoom-in"></span>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="scripts/third/angular/angular.min.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/data/data.js"></script>
+<script src="scripts/controllers/conference.js"></script>
 </body>
 </html>
