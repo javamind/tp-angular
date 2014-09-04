@@ -9,60 +9,16 @@
 </head>
 <body ng-app="myconfs">
 
-<div class="container" ng-controller="ConfCtrl">
-
-    <h1>Liste des conférences</h1>
-
-    <p>Vous pouvez sauvegarder toutes vos conférences avec myconfs</p>
-
-    <div class="row">
-        <div class="col-xs-1">
-            Filtre
-        </div>
-        <div class="col-xs-6">
-            <input type="text" ng-model="search" class="form-control">
-        </div>
-        <div class="col-xs-4">
-            &nbsp;
-        </div>
-        <div class="col-xs-1" ng-controller="MyCtrl">
-            <button class="btn btn-info" ng-click="addConference()">
-                <span class="glyphicon glyphicon-plus"></span>
-            </button>
-        </div>
-    </div>
-    <br>
-    <table class="table table-bordered table-striped">
-        <thead>
-        <tr>
-            <th ng-click="sortcolumn='image'">Logo</th>
-            <th ng-click="sortcolumn='image'">Name</th>
-            <th ng-click="sortcolumn='description'">Description</th>
-            <th ng-click="sortcolumn='startdate'">Start</th>
-            <th ng-click="sortcolumn='enddate'">End</th>
-            <th>Visu</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="conf in conferences | orderBy:sortcolumn | filter:search">
-            <td><img ng-src="{{conf.image}}" style="max-height: 40px"/></td>
-            <td>{{conf.name}}</td>
-            <td>{{conf.description | limitStringTo:150}}</td>
-            <td>{{conf.startdate | date:'dd/MM/yyyy'}}</td>
-            <td>{{conf.enddate | date:'dd/MM/yyyy'}}</td>
-            <td>
-                <button class="btn btn-default" ng-click="zoomConference(conf.name)">
-                    <span class="glyphicon glyphicon-zoom-in"></span>
-                </button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+<div class="container" ng-controller="ConfDetailCtrl">
+    <h1>Conférence {{location.name}}</h1>
+    <ul>
+        <li>Server : {{location.server}}</li>
+        <li>Port : {{location.port}}</li>
+    </ul>
 </div>
 
 <script src="scripts/third/angular/angular.min.js"></script>
 <script src="scripts/app.js"></script>
-<script src="scripts/data/data.js"></script>
 <script src="scripts/controllers/conference.js"></script>
 <script src="scripts/filters/limito.js"></script>
 </body>

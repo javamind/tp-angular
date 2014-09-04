@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('myconfs', []);
+angular.module('myconfs', ['ngResource']);
