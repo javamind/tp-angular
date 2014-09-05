@@ -49,7 +49,12 @@
         <tr ng-repeat="conf in conferences | orderBy:sortcolumn | filter:search">
             <td><img ng-src="{{conf.image}}" style="max-height: 40px"/></td>
             <td>{{conf.name}}</td>
-            <td>{{conf.description | limitStringTo:150}}</td>
+            <td>
+                {{conf.description | limitStringTo:150}}
+                <div ng-show="conf.themes">
+                    <div class="label label-primary" ng-repeat="theme in conf.themes" style="margin-left: 3px">{{theme.label}}</div>
+                </div>
+            </td>
             <td>{{conf.startdate | date:'dd/MM/yyyy'}}</td>
             <td>{{conf.enddate | date:'dd/MM/yyyy'}}</td>
             <td>

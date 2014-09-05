@@ -1,8 +1,27 @@
 'use strict';
 
-angular.module('myconfs').controller('ConfCtrl', function ($scope, ConferenceService){
-
-    $scope.conferences = ConferenceService.query();
+angular.module('myconfs').controller('ConfCtrl', function ($scope, ConferenceService, ThemeService){
+    $scope.themes = ThemeService.query();
+    ConferenceService.query(function(datas){
+        //On parcours chaque conference
+        datas.forEach(function(conf){
+            //On parcours chaque theme de la conference
+            if(conf.themes){
+                var themesComplet = [];
+                conf.themes.forEach(function(theme){
+                    //On recherche le theme ayant cet id
+                    var filter = $scope.themes.filter(function(th){
+                        return th.id === theme;
+                    });
+                    if(filter.length>0){
+                        themesComplet.push(filter[0]);
+                    }
+                });
+                conf.themes = themesComplet;
+            }
+        });
+        $scope.conferences = datas;
+    });
 
 
     $scope.addConference = function(){
