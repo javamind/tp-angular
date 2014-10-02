@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myconfs').controller('ConfCtrl', function ($scope, ConferenceService, ThemeService){
+angular.module('myconfsControllers').controller('ConfCtrl', function ($scope, ConferenceService, ThemeService){
     $scope.themes = ThemeService.query();
     ConferenceService.query(function(datas){
         //On parcours chaque conference
@@ -34,10 +34,3 @@ angular.module('myconfs').controller('ConfCtrl', function ($scope, ConferenceSer
     }
 });
 
-angular.module('myconfs').controller('ConfDetailCtrl', function ($scope, $location){
-    $scope.location = {
-        name : $location.search().name,
-        server : $location.host(),
-        port : $location.port()
-    }
-});

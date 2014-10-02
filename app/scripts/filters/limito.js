@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myconfs').filter('limitStringTo', function () {
+angular.module('myconfsFilters').filter('limitStringTo', function () {
     return function (input, size) {
         if (!size) {
             size = 100;
