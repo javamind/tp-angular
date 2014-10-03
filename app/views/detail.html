@@ -1,0 +1,34 @@
+<div class="container" ng-controller="ConfDetailCtrl">
+    <h1>Conf&eacute;rence {{conference.name}}</h1>
+    <p>
+    <div ng-show="conference.themes">
+        <div class="label label-primary" ng-repeat="theme in conference.themes" style="margin-left: 3px">{{theme.label}}</div>
+    </div>
+    </p>
+    <p>
+        {{conference.description}}
+    </p>
+    <div class="img-responsive" align="center">
+        <img ng-src="{{conference.image}}" style="max-height: 200px">
+    </div>
+    <p>&nbsp;</p>
+    <div ng-show="conference">
+        <div class="row">
+            <div class="col-md-3">Place</div>
+            <div class="col-md-9"><b>{{conference.place}}</b></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">Country</div>
+            <div class="col-md-9"><b>{{conference.country}}</b></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">Dates</div>
+            <div class="col-md-9">from <b>{{conference.startdate | date:'dd/MM/yyyy HH:mm'}}</b> to <b>{{conference.enddate | date:'dd/MM/yyyy HH:mm'}}</b></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">Price</div>
+            <div class="col-md-9"><b>{{conference.price}} €</b></div>
+        </div>
+    </div>
+
+</div>

@@ -9,66 +9,34 @@
 </head>
 <body ng-app="myconfs">
 
-<div class="container" ng-controller="ConfCtrl">
-
-    <h1>Liste des conférences</h1>
-
-    <div class="alert alert-danger" ng-show="messageErreur">Error détectée : {{messageErreur}}</div>
-
-    <p>Vous pouvez sauvegarder toutes vos conférences avec myconfs</p>
-
-    <div class="row">
-        <div class="col-xs-1">
-            Filtre
-        </div>
-        <div class="col-xs-6">
-            <input type="text" ng-model="search" class="form-control">
-        </div>
-        <div class="col-xs-4">
-            &nbsp;
-        </div>
-        <div class="col-xs-1">
-            <button class="btn btn-info" ng-click="addConference()">
-                <span class="glyphicon glyphicon-plus"></span>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
             </button>
+            <a class="navbar-brand" href="#">Conf&eacute;rence</a>
         </div>
-    </div>
-    <br>
-    <table class="table table-bordered table-striped">
-        <thead>
-        <tr>
-            <th ng-click="sortcolumn='image'">Logo</th>
-            <th ng-click="sortcolumn='image'">Name</th>
-            <th ng-click="sortcolumn='description'">Description</th>
-            <th ng-click="sortcolumn='startdate'">Start</th>
-            <th ng-click="sortcolumn='enddate'">End</th>
-            <th>Visu</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="conf in conferences | orderBy:sortcolumn | filter:search">
-            <td><img ng-src="{{conf.image}}" style="max-height: 40px"/></td>
-            <td>{{conf.name}}</td>
-            <td>
-                {{conf.description | limitStringTo:150}}
-                <div ng-show="conf.themes">
-                    <div class="label label-primary" ng-repeat="theme in conf.themes" style="margin-left: 3px">{{theme.label}}</div>
-                </div>
-            </td>
-            <td>{{conf.startdate | date:'dd/MM/yyyy'}}</td>
-            <td>{{conf.enddate | date:'dd/MM/yyyy'}}</td>
-            <td>
-                <a class="btn btn-default" ng-href="detail.html#?name={{conf.name}}">
-                    <span class="glyphicon glyphicon-zoom-in"></span>
-                </a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#/conferences">Conferences</a></li>
+                <li><a href="#/editconference/0">Nouvelle conference</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div ng-view></div>
 
 <script src="scripts/third/angular/angular.min.js"></script>
 <script src="scripts/third/angular/angular-resource.min.js"></script>
+<script src="scripts/third/angular/angular-route.min.js"></script>
 
 <script src="scripts/services/_service.js"></script>
 <script src="scripts/services/conferenceService.js"></script>

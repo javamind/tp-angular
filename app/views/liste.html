@@ -1,0 +1,63 @@
+<div class="container" ng-controller="ConfCtrl">
+
+    <h1>Liste des conf&eacute;rences</h1>
+
+    <div class="alert alert-danger" ng-show="messageErreur">Error d&eacute;tect&eacute;e : {{messageErreur}}</div>
+
+    <p>Vous pouvez sauvegarder toutes vos conf&eacute;rences avec myconfs</p>
+
+    <div class="row">
+        <div class="col-xs-1">
+            Filtre
+        </div>
+        <div class="col-xs-6">
+            <input type="text" ng-model="search" class="form-control">
+        </div>
+        <div class="col-xs-4">
+            &nbsp;
+        </div>
+        <div class="col-xs-1">
+            <button class="btn btn-info" ng-click="addConference()">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </div>
+    </div>
+    <br>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th ng-click="sortcolumn='image'">Logo</th>
+            <th ng-click="sortcolumn='image'">Name</th>
+            <th ng-click="sortcolumn='description'">Description</th>
+            <th ng-click="sortcolumn='startdate'">Start</th>
+            <th ng-click="sortcolumn='enddate'">End</th>
+            <th>Visu</th>
+            <th>Modif</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="conf in conferences | orderBy:sortcolumn | filter:search">
+            <td><img ng-src="{{conf.image}}" style="max-height: 40px"/></td>
+            <td>{{conf.name}}</td>
+            <td>
+                {{conf.description | limitStringTo:150}}
+                <div ng-show="conf.themes">
+                    <div class="label label-primary" ng-repeat="theme in conf.themes" style="margin-left: 3px">{{theme.label}}</div>
+                </div>
+            </td>
+            <td>{{conf.startdate | date:'dd/MM/yyyy'}}</td>
+            <td>{{conf.enddate | date:'dd/MM/yyyy'}}</td>
+            <td>
+                <a class="btn btn-default" ng-click="zoomConference(conf.id)">
+                    <span class="glyphicon glyphicon-zoom-in"></span>
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-default" ng-click="editConference(conf.id)">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,52 @@
+<div class="container" ng-controller="ConfDetailCtrl">
+    <h1>
+        <span ng-if="!conference.id">Création</span>
+        <span ng-if="conference.id">Mise à jour </span>
+        d'une conférence</h1>
+
+    <form role="form">
+        <div class="row form-group">
+            <div class="col-md-3"><label for="name">Name</label></div>
+            <div class="col-md-9"><input type="text" id="name" class="form-control" ng-model="conference.name"/></div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-3"><label for="description">Description</label></div>
+            <div class="col-md-9"><textarea id="description" class="form-control" ng-model="conference.description"
+                                            style="height: 100px"></textarea></div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-3"><label for="place">Place</label></div>
+            <div class="col-md-9"><input type="text" id="place" class="form-control" ng-model="conference.place"/></div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-3"><label for="country">Country</label></div>
+            <div class="col-md-9"><input type="text" id="country" class="form-control" ng-model="conference.country"/></div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-3"><label for="startdate">Start date</label></div>
+            <div class="col-md-9"><input type="datetime" id="startdate" class="form-control" ng-model="conference.startdate2"
+                                         placeholder="yyyy-MM-dd HH:mm:ss"/></div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-3"><label for="enddate">End date</label></div>
+            <div class="col-md-9"><input type="datetime" id="enddate" class="form-control" ng-model="conference.enddate2"
+                                         placeholder="yyyy-MM-dd HH:mm:ss"/></div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-3"><label for="price">Price (€)</label></div>
+            <div class="col-md-9"><input type="text" id="price" class="form-control" ng-model="conference.price"/> </div>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-info" ng-click="save()">
+               <span class="glyphicon glyphicon-floppy-save"></span>
+            </button>
+            <button type="button" class="btn btn-danger" ng-click="delete($event)" ng-show="conference.id">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+            <button type="button" class="btn btn-default" ng-click="return()">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+            </button>
+        </div>
+    </form>
+</div>
