@@ -52,7 +52,7 @@
             <td>
                 {{conf.description | limitStringTo:150}}
                 <div ng-show="conf.themes">
-                    <div class="label label-primary" ng-repeat="theme in conf.themes" style="margin-left: 3px">{{theme.label}}</div>
+                    <div class="label label-primary" ng-repeat="theme in conf.themesComplet" style="margin-left: 3px">{{theme.label}}</div>
                 </div>
             </td>
             <td>{{conf.startdate | date:'dd/MM/yyyy'}}</td>

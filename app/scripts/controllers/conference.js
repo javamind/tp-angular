@@ -17,7 +17,7 @@ angular.module('myconfs').controller('ConfCtrl', function ($scope, ConferenceSer
                         themesComplet.push(filter[0]);
                     }
                 });
-                conf.themes = themesComplet;
+                conf.themesComplet = themesComplet;
             }
         });
         $scope.conferences = datas;
