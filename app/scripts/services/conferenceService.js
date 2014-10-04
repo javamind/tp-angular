@@ -2,6 +2,6 @@
 
 angular.module('myconfsServices').factory('ConferenceService',
     function($resource, myconfsConstants){
-        return $resource(myconfsConstants.url + 'conference/:id', {id:'@id'});
+        return $resource(myconfsConstants.url + 'conference/:id', {id:'@_id'});
     }
 );

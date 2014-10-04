@@ -18,7 +18,7 @@ angular.module('myconfsServices').factory('ThemeService', function ($resource, m
                     themesComplet.push(filter[0]);
                 }
             });
-            conf.themes = themesComplet;
+            conf.themesComplet = themesComplet;
         }
     }
 
